@@ -739,6 +739,25 @@ namespace LibGit2Sharp.Core
 
         #endregion
 
+        #region git_filter_
+
+        public static int git_filter_register(string name, FilterSafeHandle filter, int priority)
+        {
+            return NativeMethods.git_filter_register(name, filter, priority);
+        }
+
+        public static int git_filter_unregister(string name)
+        {
+            return NativeMethods.git_filter_unregister(name);
+        }
+
+        public static FilterSafeHandle git_filter_lookup(string name)
+        {
+            return NativeMethods.git_filter_lookup(name);
+        }
+
+        #endregion
+
         #region git_graph_
 
         public static Tuple<int?, int?> git_graph_ahead_behind(RepositorySafeHandle repo, Commit first, Commit second)

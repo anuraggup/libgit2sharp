@@ -1533,6 +1533,19 @@ namespace LibGit2Sharp.Core
 
         [DllImport(libgit2)]
         internal static extern int git_cherry_pick(RepositorySafeHandle repo, GitObjectSafeHandle commit, GitCherryPickOptions options);
+
+        [DllImport(libgit2)]
+        internal static extern int git_filter_register(
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = UniqueId.UniqueIdentifier, MarshalTypeRef = typeof(StrictUtf8Marshaler))] string name,
+            FilterSafeHandle filter,
+            int priority);
+
+        [DllImport(libgit2)]
+        internal static extern int git_filter_unregister([MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = UniqueId.UniqueIdentifier, MarshalTypeRef = typeof(StrictUtf8Marshaler))] string name);
+
+        [DllImport(libgit2)]
+        internal static extern FilterSafeHandle git_filter_lookup([MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = UniqueId.UniqueIdentifier, MarshalTypeRef = typeof(StrictUtf8Marshaler))] string name);
+
     }
 }
 // ReSharper restore InconsistentNaming
